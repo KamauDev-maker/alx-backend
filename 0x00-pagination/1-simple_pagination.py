@@ -2,18 +2,16 @@
 """
 Simple pagnation
 """
-from typing import List, Tuple
 import csv
 import math
+from typing import List, Tuple
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """
-    Method that takes two integer args
+    Method that takes two int and returns a tuple
     """
-    start_index = (page - 1) * page_size
-    end_index = start_index + page_size
-    return start_index, end_index
+    return ((page - 1) * page_size, ((page - 1) * page_size) + page_size)
 
 
 class Server:
