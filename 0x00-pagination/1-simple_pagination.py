@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 """
-Simple pagnation
+Simple Pagnition
 """
+from typing import List, Tuple
 import csv
 import math
-from typing import List, Tuple
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
-    """
-    Method that takes two int and returns a tuple
-    """
-    return ((page - 1) * page_size, ((page - 1) * page_size) + page_size)
+    start_index = (page - 1) * page_size
+    end_index = start_index + page_size
+
+    return start_index, end_index
 
 
 class Server:
@@ -32,15 +32,15 @@ class Server:
 
         return self.__dataset
 
+    def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
+        """
+        Retrieves the pagination
+        """
+        assert isinstance(page, int) and page > 0
+        assert isinstance(page_size, int) and page_size > 0
 
-def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-    """
-    Retrieves the data
-    """
-    assert isinstance(page, int) and page > 0
-    assert isinstance(page_size, int) and page_size > 0
-    dataset = self.dataset()
-    start_index, end_index = index_range(page, page_size)
-    if start_index >= len(dataset):
-        return []
-    return dataset[start_index:end_index]
+        dataset = self.dataset()
+        start_index, end_index = index_range(page, page_size)
+        if start_index >= len(dataset):
+            return []
+        return dataset[start_index:end_index]
