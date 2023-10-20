@@ -7,13 +7,6 @@ import math
 from typing import Tuple
 
 
-def index_range(page: int, page_size: int) -> Tuple[int, int]:
-    """
-    Method that takes two int and returns a tuple
-    """
-    return ((page - 1) * page_size, ((page - 1) * page_size) + page_size)
-
-
 class Server:
     """Server class to paginate a database of popular baby names.
     """
@@ -43,3 +36,9 @@ class Server:
         pagination: List = self.dataset()
 
         return (pagination[range[0]:range[1]])
+
+    def index_range(page: int, page_size: int) -> Tuple[int, int]:
+        """
+        Method that takes two int and returns a tuple
+        """
+        return ((page - 1) * page_size, ((page - 1) * page_size) + page_size)
