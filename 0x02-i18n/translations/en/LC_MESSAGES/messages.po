@@ -3,12 +3,15 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
 #
-msgid ""
+msgid "Welcome to Holberton"
 msgstr ""
+
+msgid       "Hello world!"
+msgstr      ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-10-31 18:10-0400\n"
-"PO-Revision-Date: 2023-10-31 18:10-0400\n"
+"POT-Creation-Date: 2023-11-01 00:16-0400\n"
+"PO-Revision-Date: 2023-11-01 00:16-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
 "Language-Team: en <LL@li.org>\n"
