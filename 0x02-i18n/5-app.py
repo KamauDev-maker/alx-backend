@@ -18,7 +18,8 @@ class Config:
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
-    
+
+
 app.config.from_object(Config)
 
 users = {
@@ -40,12 +41,14 @@ def get_user() -> Union[Dict, None]:
         return users.get(int(login_id))
     return None
 
+
 @app.before_request
 def before_request() -> None:
     """
     performs a session request
     """
     g.user = get_user()
+
 
 @babel.localeselector
 def get_locale() -> str:
@@ -67,4 +70,4 @@ def index() -> str:
 
 
 if __name__ == '__main__':
-     app.run()
+    app.run()
