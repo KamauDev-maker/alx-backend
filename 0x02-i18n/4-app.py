@@ -3,7 +3,8 @@
 """
 
 from flask import Flask, render_template, request
-from flask_babel import Babel, _
+from flask_babel import Babel, _, get_locale
+from flask_babel import gettext as _
 
 app = Flask(__name__)
 
@@ -25,14 +26,17 @@ app.config.from_object(Config)
 babel = Babel(app)
 
 
-@babel.localeselector
+# @babel.localeselector
 def get_locale() -> str:
     """
     request locale
     """
-    if 'locale' in request.args and request.args['locale'] in app.config['LANGUAGES']:
-        return request.args['locale']
+    locale = request.args.get('locale')
+    if locale in app.config['LANGUAGES']:
+        return locale
     return request.accept_languages.best_match(app.config['LANGUAGES'])
+
+babel = Babel(app, locale_selector=get_locale)
 
 
 @app.route('/')
