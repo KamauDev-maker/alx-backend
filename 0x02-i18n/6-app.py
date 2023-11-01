@@ -58,6 +58,11 @@ def get_locale() -> str:
     locale = request.args.get('locale')
     if locale in app.config['LANGUAGES']:
         return locale
+    if g.user and g.user['locale'] in app.config['LANGUAGES']:
+        return g.user['locale']
+    user_locale_agent = request.headers.get('locale', '')
+    if user_locale_agent in app.config['LANGUAGES']:
+        return user_locale_agent
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
@@ -66,7 +71,7 @@ def index() -> str:
     """
     default route
     """
-    return render_template('5-index.html')
+    return render_template('6-index.html')
 
 
 if __name__ == '__main__':
